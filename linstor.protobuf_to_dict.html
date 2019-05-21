@@ -1,0 +1,141 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>linstor.protobuf_to_dict package &#8212; linstor 0.9.3-3aaf4e documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="linstor package" href="linstor.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="linstor.html" title="linstor package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">linstor 0.9.3-3aaf4e documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="linstor.html" accesskey="U">linstor package</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linstor-protobuf-to-dict-package">
+<h1>linstor.protobuf_to_dict package<a class="headerlink" href="#linstor-protobuf-to-dict-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<p>A small Python library for creating dicts from protocol buffers.
+Useful as an intermediate step before serialization (e.g. to JSON).</p>
+<p>This library is used, as older protobuf versions don’t have a JSON serializer yet.</p>
+<span class="target" id="module-linstor.protobuf_to_dict"></span><dl class="function">
+<dt id="linstor.protobuf_to_dict.protobuf_to_dict">
+<code class="descclassname">linstor.protobuf_to_dict.</code><code class="descname">protobuf_to_dict</code><span class="sig-paren">(</span><em>pb</em>, <em>type_callable_map={1: &lt;type 'float'&gt;</em>, <em>2: &lt;type 'float'&gt;</em>, <em>3: &lt;type 'long'&gt;</em>, <em>4: &lt;type 'long'&gt;</em>, <em>5: &lt;type 'int'&gt;</em>, <em>6: &lt;type 'long'&gt;</em>, <em>7: &lt;type 'int'&gt;</em>, <em>8: &lt;type 'bool'&gt;</em>, <em>9: &lt;type 'unicode'&gt;</em>, <em>12: &lt;function &lt;lambda&gt;&gt;</em>, <em>13: &lt;type 'int'&gt;</em>, <em>14: &lt;type 'int'&gt;</em>, <em>15: &lt;type 'int'&gt;</em>, <em>16: &lt;type 'long'&gt;</em>, <em>17: &lt;type 'int'&gt;</em>, <em>18: &lt;type 'long'&gt;}</em>, <em>use_enum_labels=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.protobuf_to_dict.protobuf_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="linstor.protobuf_to_dict.dict_to_protobuf">
+<code class="descclassname">linstor.protobuf_to_dict.</code><code class="descname">dict_to_protobuf</code><span class="sig-paren">(</span><em>pb_klass_or_instance</em>, <em>values</em>, <em>type_callable_map={12: &lt;function get_bytes&gt;}</em>, <em>strict=True</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.protobuf_to_dict.dict_to_protobuf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populates a protobuf model from a dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pb_klass_or_instance</strong> (<em>a type</em><em> or </em><em>instance of a subclass of google.protobuf.message.Message</em>) – a protobuf message class, or an protobuf instance</li>
+<li><strong>values</strong> (<em>dict</em>) – a dictionary of values. Repeated and nested values are 
+fully supported.</li>
+<li><strong>type_callable_map</strong> (<em>dict</em>) – a mapping of protobuf types to callables for setting
+values on the target instance.</li>
+<li><strong>strict</strong> (<em>bool</em>) – complain if keys in the map are not fields on the message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">linstor.protobuf_to_dict package</a><ul>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="linstor.html"
+                        title="previous chapter">linstor package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/linstor.protobuf_to_dict.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="linstor.html" title="linstor package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">linstor 0.9.3-3aaf4e documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="linstor.html" >linstor package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Peinthor Rene.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

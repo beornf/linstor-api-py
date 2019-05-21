@@ -1,0 +1,2430 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>linstor package &#8212; linstor 0.9.3-3aaf4e documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="linstor.protobuf_to_dict package" href="linstor.protobuf_to_dict.html" />
+    <link rel="prev" title="Linstor Python API Introduction" href="introduction.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="linstor.protobuf_to_dict.html" title="linstor.protobuf_to_dict package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Linstor Python API Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">linstor 0.9.3-3aaf4e documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linstor-package">
+<h1>linstor package<a class="headerlink" href="#linstor-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linstor.protobuf_to_dict.html">linstor.protobuf_to_dict package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linstor.protobuf_to_dict.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-linstor.resource">
+<span id="linstor-resource-module"></span><h2>linstor.resource module<a class="headerlink" href="#module-linstor.resource" title="Permalink to this headline">¶</a></h2>
+<p>Resource module</p>
+<dl class="class">
+<dt id="linstor.resource.Resource">
+<em class="property">class </em><code class="descclassname">linstor.resource.</code><code class="descname">Resource</code><span class="sig-paren">(</span><em>name</em>, <em>uri='linstor://localhost'</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Resource class represents a DRBD Resource.</p>
+<p>This object allows managing existing DRBD Resources as well as creating new ones.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – The name of the DRBD resource.</li>
+<li><strong>uri</strong> (<em>str</em>) – A list of controller addresses.
+e.g: <code class="docutils literal notranslate"><span class="pre">linstor://localhost,10.0.0.2</span></code>, <code class="docutils literal notranslate"><span class="pre">linstor+ssl://localhost,linstor://192.168.0.1</span></code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="linstor.resource.Resource.activate">
+<code class="descname">activate</code><span class="sig-paren">(</span><em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a resource available at a given host.</p>
+<p>If the host already contains a diskful assignment, this is a NOOP. Otherwise a diskless assignment is
+created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_name</strong> (<em>str</em>) – Name of the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.resource.Resource.allow_two_primaries">
+<code class="descname">allow_two_primaries</code><a class="headerlink" href="#linstor.resource.Resource.allow_two_primaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the DRBD net-option ‘allow-two-primaries’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The value of the DRBD net-option ‘allow-two-primaries’. Raises LinstorError in case of error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.autoplace">
+<code class="descname">autoplace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.autoplace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automatically place the Resource according to values set in the placement policy.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">To autoplace a Resource ‘foo’ 3 times redundant on the storage pool ‘drbdpool’ one would:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span>$ foo.placement.redundancy = 3
+$ foo.placement.storage_pool = &#39;drbdpool&#39;
+$ foo.autoplace()
+</pre></div>
+</div>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.deactivate">
+<code class="descname">deactivate</code><span class="sig-paren">(</span><em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.deactivate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deactivates a resource on a host if possible.</p>
+<p>If the assignment is diskless, delete this assignment. If it is diskful and therefore part of the
+given redundany, this is a NOOP (i.e., the redundancy is not decreased).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_name</strong> (<em>str</em>) – Name of the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>node_name=None</em>, <em>snapshots=True</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the resource globally or on the given host.</p>
+<p>If the node name is None, deletes the resource globally.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Deletes resource only from the specified node.</li>
+<li><strong>snapshots</strong> (<em>bool</em>) – If True deletes snapshots prior deleting the resource</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if success, else raises LinstorError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.diskful">
+<code class="descname">diskful</code><span class="sig-paren">(</span><em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.diskful" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign a resource diskful on a given node.</p>
+<p>If the assignment does not exist, create it diskful. If the assignment is already diskful, this is a
+NOOP. If it exists diskless, convert it to diskful.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_name</strong> (<em>str</em>) – Name of the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.diskful_nodes">
+<code class="descname">diskful_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.diskful_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the host names of all diskful nodes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Host names of diskful nodes.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.diskless">
+<code class="descname">diskless</code><span class="sig-paren">(</span><em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.diskless" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign a resource diskless on a given node.</p>
+<p>If the assignment does not exist, create it diskless. If the assignment is already diskless, this is a
+NOOP. If it exists diskful, convert it to diskless.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_name</strong> (<em>str</em>) – Name of the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.diskless_nodes">
+<code class="descname">diskless_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.diskless_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the host names of all diskless nodes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Host names of diskless nodes.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.drbd_proxy_disable">
+<code class="descname">drbd_proxy_disable</code><span class="sig-paren">(</span><em>node_name_a</em>, <em>node_name_b</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.drbd_proxy_disable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.drbd_proxy_enable">
+<code class="descname">drbd_proxy_enable</code><span class="sig-paren">(</span><em>node_name_a</em>, <em>node_name_b</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.drbd_proxy_enable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.is_assigned">
+<code class="descname">is_assigned</code><span class="sig-paren">(</span><em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.is_assigned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the resource is assigned diskful or diskless on the given host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_name</strong> (<em>str</em>) – Name of the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if assigned (diskful or diskless) on given host.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.is_diskful">
+<code class="descname">is_diskful</code><span class="sig-paren">(</span><em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.is_diskful" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the resource is assigned diskful on the given host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_name</strong> (<em>str</em>) – Name of the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if assigned diskful on given host.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.is_diskless">
+<code class="descname">is_diskless</code><span class="sig-paren">(</span><em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.is_diskless" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the resource is assigned diskless on the given host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_name</strong> (<em>str</em>) – Name of the node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if assigned diskless on given host.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.is_thin">
+<code class="descname">is_thin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.is_thin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if the used storage pool of the resource is thin.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if storage pool used is thin.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.resource.Resource.name">
+<code class="descname">name</code><a class="headerlink" href="#linstor.resource.Resource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the Resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The name of the Resource.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.resource.Resource.port">
+<code class="descname">port</code><a class="headerlink" href="#linstor.resource.Resource.port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the port of the Resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The port of the Resource.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.restore_from_snapshot">
+<code class="descname">restore_from_snapshot</code><span class="sig-paren">(</span><em>snapshot_name</em>, <em>resource_name_to</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.restore_from_snapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restores a new resource from a snapshot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>snapshot_name</strong> – Snapshot name to use for restoration.</li>
+<li><strong>resource_name_to</strong> – Name of the new resource.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A new resource object restored from the snapshot.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#linstor.resource.Resource" title="linstor.resource.Resource">Resource</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.snapshot_create">
+<code class="descname">snapshot_create</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.snapshot_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new snapshot for the resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Name of the snapshot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.snapshot_delete">
+<code class="descname">snapshot_delete</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.snapshot_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a given snapshot of this resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Name of the snapshot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.resource.Resource.snapshot_rollback">
+<code class="descname">snapshot_rollback</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Resource.snapshot_rollback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rolls resource data back to snapshot state. The resource must not be in use.
+The snapshot will not be removed and can be used for subsequent rollbacks.
+Only the most recent snapshot may be used; to roll back to an earlier
+snapshot, the intermediate snapshots must first be deleted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Name of the snapshot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if success, else raises LinstorError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="linstor.resource.Volume">
+<em class="property">class </em><code class="descclassname">linstor.resource.</code><code class="descname">Volume</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.Volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Volume class represents a DRBD Volume.</p>
+<p>This object contains important properties of a Volume, including
+e.g: <code class="docutils literal notranslate"><span class="pre">size</span></code>, and <code class="docutils literal notranslate"><span class="pre">device_path</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> – String parsable by linstor.SizeCalc or size in bytes.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="linstor.resource.Volume.device_path">
+<code class="descname">device_path</code><a class="headerlink" href="#linstor.resource.Volume.device_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the device path of a Volume (e.g., /dev/drbd1000).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The device path of a Volume.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.resource.Volume.minor">
+<code class="descname">minor</code><a class="headerlink" href="#linstor.resource.Volume.minor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minor number of a Volume (e.g., 1000).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The minor number of a Volume.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.resource.Volume.size">
+<code class="descname">size</code><a class="headerlink" href="#linstor.resource.Volume.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of a Volume (e.g., 1000000).</p>
+<p>Setting tye size of a volume that is deployed triggers a resize operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The size of a Volume in bytes.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.resource.Volume.storage_pool_name">
+<code class="descname">storage_pool_name</code><a class="headerlink" href="#linstor.resource.Volume.storage_pool_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="linstor.resource.wraps">
+<code class="descclassname">linstor.resource.</code><code class="descname">wraps</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.resource.wraps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces functools.wraps in order to undo wrapping when generating Sphinx documentation</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-linstor.kv">
+<span id="linstor-kv-module"></span><h2>linstor.kv module<a class="headerlink" href="#module-linstor.kv" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="linstor.kv.KV">
+<em class="property">class </em><code class="descclassname">linstor.kv.</code><code class="descname">KV</code><span class="sig-paren">(</span><em>name</em>, <em>namespace='/'</em>, <em>cached=True</em>, <em>uri='linstor://localhost'</em>, <em>rw_to_linstor=True</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.kv.KV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>KV class represents a Key-Value Store backed by LINSTOR.</p>
+<p>This object provides mainly the same interface as a Python3 dict and acts as a Key-Value store with
+namespaces. A namespace acts like a prefix in a UNIX file system and gets added to the every key that is
+set. The default namespace is ‘/’.</p>
+<p>Limitations: Keys and values have to be of type str. KV.keys(), KV.items() (as well as KV.values()) are
+implemented as simple generators. So they provide a “view”, but not a “set-like” behavior. If you need
+that, convert the generator to a set (i.e. ks = KV.keys(); set(ks) &amp; {‘foo’}).</p>
+<p>The __repr__() method is not overridden intentionally and provides the representation of the whole dict,
+basically ignoring the namespace. This is helpful for debugging.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">Add a value to a namespace /foo/bar, list it, change the namespace to “/” and list the item:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span>$ kv = linstor.KV(&#39;myKV&#39;, namespace=&#39;/foo/bar/&#39;)
+$ kv[&#39;key&#39;] = &#39;val&#39;
+$ list(kv.items()) -&gt; [(&#39;key&#39;, &#39;val&#39;)]
+$ kv.namespace = &#39;/&#39;
+$ list(kv.items()) -&gt; [(&#39;/foo/bar/key&#39;, &#39;val&#39;)]
+$ kv[&#39;foo/baz/key&#39;] = &#39;valbaz&#39;
+$ kv.namespace = &#39;/foo/bar&#39;
+$ list(kv.items()) -&gt; [(&#39;key&#39;, &#39;val&#39;)] # keys in /foo/baz not visible
+</pre></div>
+</div>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – The name of the KV-store. It acts as a unique handle.</li>
+<li><strong>namespace</strong> (<em>str</em>) – A UNIX-like file system path.</li>
+<li><strong>cached</strong> (<em>bool</em>) – A KV can be backed by a python dict as a caching layer. As of now has to be True.
+This influences whether reads are forwarded to LINSTOR or not. Writes are obviously always forwarded.</li>
+<li><strong>uri</strong> (<em>str</em>) – A list of controller addresses.</li>
+<li><strong>rw_to_linstor</strong> (<em>bool</em>) – If set to False, entries are not written to LINSTOR. It can be used to use
+the KV as a name spaced dict() only, or for debugging.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="linstor.kv.KV.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None.  Remove all items from D.<a class="headerlink" href="#linstor.kv.KV.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; D[k] if k in D, else d.  d defaults to None.<a class="headerlink" href="#linstor.kv.KV.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list of D's (key, value) pairs, as 2-tuples<a class="headerlink" href="#linstor.kv.KV.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.keys">
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list of D's keys<a class="headerlink" href="#linstor.kv.KV.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.kv.KV.namespace">
+<code class="descname">namespace</code><a class="headerlink" href="#linstor.kv.KV.namespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current name space (e.g., /foo/).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current name space.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.pop">
+<code class="descname">pop</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; v, remove specified key and return the corresponding value.<a class="headerlink" href="#linstor.kv.KV.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>If key is not found, d is returned if given, otherwise KeyError is raised</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.popitem">
+<code class="descname">popitem</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; (k, v), remove and return some (key, value) pair as a<a class="headerlink" href="#linstor.kv.KV.popitem" title="Permalink to this definition">¶</a></dt>
+<dd><p>2-tuple; but raise KeyError if D is empty.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.setdefault">
+<code class="descname">setdefault</code><span class="sig-paren">(</span><em>k</em><span class="optional">[</span>, <em>d</em><span class="optional">]</span><span class="sig-paren">)</span> &#x2192; D.get(k,d), also set D[k]=d if k not in D<a class="headerlink" href="#linstor.kv.KV.setdefault" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="optional">[</span><em>E</em>, <span class="optional">]</span><em>**F</em><span class="sig-paren">)</span> &#x2192; None.  Update D from dict/iterable E and F.<a class="headerlink" href="#linstor.kv.KV.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>If E present and has a .keys() method, does:     for k in E: D[k] = E[k]
+If E present and lacks .keys() method, does:     for (k, v) in E: D[k] = v
+In either case, this is followed by: for k in F: D[k] = F[k]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.kv.KV.values">
+<code class="descname">values</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; list of D's values<a class="headerlink" href="#linstor.kv.KV.values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-linstor.linstorapi">
+<span id="linstor-linstorapi-module"></span><h2>linstor.linstorapi module<a class="headerlink" href="#module-linstor.linstorapi" title="Permalink to this headline">¶</a></h2>
+<p>Linstorapi module</p>
+<dl class="class">
+<dt id="linstor.linstorapi.Linstor">
+<em class="property">class </em><code class="descclassname">linstor.linstorapi.</code><code class="descname">Linstor</code><span class="sig-paren">(</span><em>ctrl_host</em>, <em>timeout=300</em>, <em>keep_alive=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Linstor class represents a client connection to the Linstor controller.
+It has all methods to manipulate all kind of objects on the controller.</p>
+<p>The controller host address has to be specified as linstor url.
+e.g: <code class="docutils literal notranslate"><span class="pre">linstor://localhost</span></code>, <code class="docutils literal notranslate"><span class="pre">linstor+ssl://localhost</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ctrl_host</strong> (<em>str</em>) – Linstor uri to the controller e.g. <code class="docutils literal notranslate"><span class="pre">linstor://192.168.0.1</span></code></li>
+<li><strong>keep_alive</strong> (<em>bool</em>) – Tries to keep the connection alive</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="linstor.linstorapi.Linstor.APICALL2RESPONSE">
+<code class="descname">APICALL2RESPONSE</code><em class="property"> = {'LstCtrlProps': &lt;class 'linstor.responses.ControllerProperties'&gt;, 'LstKvs': &lt;class 'linstor.responses.KeyValueStoresResponse'&gt;, 'LstNode': &lt;class 'linstor.responses.NodeListResponse'&gt;, 'LstRsc': &lt;class 'linstor.responses.ResourceResponse'&gt;, 'LstRscDfn': &lt;class 'linstor.responses.ResourceDefinitionResponse'&gt;, 'LstSnapshotDfn': &lt;class 'linstor.responses.SnapshotResponse'&gt;, 'LstStorPool': &lt;class 'linstor.responses.StoragePool'&gt;, 'LstStorPoolDfn': &lt;class 'linstor.responses.StoragePoolDefinitionResponse'&gt;, 'LstVlm': &lt;class 'linstor.responses.VolumeResponse'&gt;, 'LstVlmDfn': &lt;class 'linstor.responses.VolumeDefinitionResponse'&gt;, 'QryMaxVlmSize': &lt;class 'linstor.responses.MaxVolumeSizeResponse'&gt;, 'ReqErrorReports': &lt;class 'linstor.responses.ErrorReport'&gt;, 'ReqRscConnList': &lt;class 'linstor.responses.ResourceConnectionsResponse'&gt;, 'Version': &lt;class 'linstor.responses.ControllerVersion'&gt;}</em><a class="headerlink" href="#linstor.linstorapi.Linstor.APICALL2RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.Linstor.REST_PORT">
+<code class="descname">REST_PORT</code><em class="property"> = 3370</em><a class="headerlink" href="#linstor.linstorapi.Linstor.REST_PORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.Linstor.all_api_responses_no_error">
+<em class="property">classmethod </em><code class="descname">all_api_responses_no_error</code><span class="sig-paren">(</span><em>replies</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.all_api_responses_no_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if none of the responses has an error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replies</strong> (<em>list</em><em>[</em><em>ApiCallResponse</em><em>]</em>) – apicallresponse to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if none of the replies has an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.Linstor.all_api_responses_success">
+<em class="property">classmethod </em><code class="descname">all_api_responses_success</code><span class="sig-paren">(</span><em>replies</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.all_api_responses_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if none of the responses has an error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replies</strong> (<em>list</em><em>[</em><em>ApiCallResponse</em><em>]</em>) – apicallresponse to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if all replies are success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects the internal linstor network client.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.Linstor.connected">
+<code class="descname">connected</code><a class="headerlink" href="#linstor.linstorapi.Linstor.connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the Linstor object is connect to a controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if connected, else False.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.controller_del_prop">
+<code class="descname">controller_del_prop</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.controller_del_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a property on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> – Key of the property.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list containing ApiCallResponses from the controller.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[ApiCallResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.controller_host">
+<code class="descname">controller_host</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.controller_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the used controller hostname.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Uri used to connect.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.controller_info">
+<code class="descname">controller_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.controller_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>If connected this method returns the controller info string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Controller info string or None if not connected.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.controller_props">
+<code class="descname">controller_props</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.controller_props" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all controller properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A MsgLstCtrlCfgProps proto message containing all controller props.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.controller_set_prop">
+<code class="descname">controller_set_prop</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.controller_set_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a property on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key</strong> (<em>str</em>) – Key of the property.</li>
+<li><strong>value</strong> (<em>str</em>) – New Value of the property.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.controller_version">
+<code class="descname">controller_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.controller_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>If connected this method returns the controller version object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Controller info string or None if not connected.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">ControllerVersion</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.crypt_create_passphrase">
+<code class="descname">crypt_create_passphrase</code><span class="sig-paren">(</span><em>passphrase</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.crypt_create_passphrase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new crypt passphrase on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>passphrase</strong> – New passphrase.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list containing ApiCallResponses from the controller.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[ApiCallResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.crypt_enter_passphrase">
+<code class="descname">crypt_enter_passphrase</code><span class="sig-paren">(</span><em>passphrase</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.crypt_enter_passphrase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the master passphrase to unlock crypted volumes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>passphrase</strong> – Passphrase to send to the controller.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list containing ApiCallResponses from the controller.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[ApiCallResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.crypt_modify_passphrase">
+<code class="descname">crypt_modify_passphrase</code><span class="sig-paren">(</span><em>old_passphrase</em>, <em>new_passphrase</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.crypt_modify_passphrase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the current crypt passphrase.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>old_passphrase</strong> – Old passphrase, need for decrypt current volumes.</li>
+<li><strong>new_passphrase</strong> – New passphrase.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.Linstor.curl">
+<code class="descname">curl</code><a class="headerlink" href="#linstor.linstorapi.Linstor.curl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the current connection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the object was connected else False.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.drbd_proxy_disable">
+<code class="descname">drbd_proxy_disable</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>node_a</em>, <em>node_b</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.drbd_proxy_disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disables DRBD Proxy on a resource connection.
+Identified by the resource name, node1 and node2 arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>node_a</strong> (<em>str</em>) – Name of the first node.</li>
+<li><strong>node_b</strong> (<em>str</em>) – Name of the second node.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.drbd_proxy_enable">
+<code class="descname">drbd_proxy_enable</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>node_a</em>, <em>node_b</em>, <em>port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.drbd_proxy_enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables DRBD Proxy on a resource connection.
+Identified by the resource name, node1 and node2 arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>node_a</strong> (<em>str</em>) – Name of the first node.</li>
+<li><strong>node_b</strong> (<em>str</em>) – Name of the second node.</li>
+<li><strong>port</strong> (<em>int</em>) – Port the Proxy connection should use.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.drbd_proxy_modify">
+<code class="descname">drbd_proxy_modify</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>property_dict=None</em>, <em>delete_props=None</em>, <em>compression_type=None</em>, <em>compression_property_dict=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.drbd_proxy_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure DRBD Proxy for the given resource definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource definition to modify.</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+<li><strong>compression_type</strong> (<em>str</em>) – The compression type to use.</li>
+<li><strong>str</strong><strong>] </strong><strong>compression_property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for compression values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.error_report_list">
+<code class="descname">error_report_list</code><span class="sig-paren">(</span><em>nodes=None</em>, <em>with_content=False</em>, <em>since=None</em>, <em>to=None</em>, <em>ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.error_report_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves an error report list from the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nodes</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Nodes to filter, if None all</li>
+<li><strong>with_content</strong> (<em>bool</em>) – If true the full log content will be retrieved</li>
+<li><strong>since</strong> (<em>datetime</em>) – Start datetime from when to include, if None all</li>
+<li><strong>to</strong> (<em>datetime</em>) – Until datetime to include error reports, if None all</li>
+<li><strong>ids</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Ids there string starts with to include, if None all</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ErrorReport from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ErrorReport]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.Linstor.filter_api_call_response">
+<em class="property">classmethod </em><code class="descname">filter_api_call_response</code><span class="sig-paren">(</span><em>replies</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.filter_api_call_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters api call responses from Controller replies.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replies</strong> (<em>list</em><em>[</em><em>ProtoMessageResponse</em><em>]</em>) – controller reply list</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns all only ApiCallResponses from replies or empty list.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">[ApiCallResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.keyvaluestore_list">
+<code class="descname">keyvaluestore_list</code><span class="sig-paren">(</span><em>instance_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.keyvaluestore_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request key values for the given instance_name. Note that for implementation and historic reasons keys
+with a ‘/’ as prefix are returned with out this ‘/’. linstor.KV() might be a better fit in general.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Key/Value store list response objects</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">KeyValueStore</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>LinstorError</strong> – if apicallerror or no response received</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.keyvaluestore_modify">
+<code class="descname">keyvaluestore_modify</code><span class="sig-paren">(</span><em>instance_name</em>, <em>property_dict=None</em>, <em>delete_props=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.keyvaluestore_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the properties of a given key value store instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>instance_name</strong> (<em>str</em>) – Name of the Key/Value store to modify.</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.keyvaluestores">
+<code class="descname">keyvaluestores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.keyvaluestores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Requests all known KeyValue stores known to linstor and returns them in a KeyValueStoresResponse.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Key/Value store list response objects</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">KeyValueStoresResponse</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>LinstorError</strong> – if apicallerror or no response received</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.Linstor.layer_list">
+<em class="property">classmethod </em><code class="descname">layer_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.layer_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of possible layer names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Set of layer names</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set[str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.netinterface_create">
+<code class="descname">netinterface_create</code><span class="sig-paren">(</span><em>node_name</em>, <em>interface_name</em>, <em>ip</em>, <em>port=None</em>, <em>com_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.netinterface_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a netinterface for a given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Name of the node to add the interface.</li>
+<li><strong>interface_name</strong> (<em>str</em>) – Name of the new interface.</li>
+<li><strong>ip</strong> (<em>str</em>) – IP address of the interface.</li>
+<li><strong>port</strong> (<em>int</em>) – Port of the interface</li>
+<li><strong>com_type</strong> (<em>str</em>) – Communication type to use on the interface.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.netinterface_delete">
+<code class="descname">netinterface_delete</code><span class="sig-paren">(</span><em>node_name</em>, <em>interface_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.netinterface_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a netinterface on the given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Name of the node.</li>
+<li><strong>interface_name</strong> (<em>str</em>) – Name of the netinterface to delete.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.netinterface_modify">
+<code class="descname">netinterface_modify</code><span class="sig-paren">(</span><em>node_name</em>, <em>interface_name</em>, <em>ip</em>, <em>port=None</em>, <em>com_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.netinterface_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify a netinterface on the given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Name of the node.</li>
+<li><strong>interface_name</strong> (<em>str</em>) – Name of the netinterface to modify.</li>
+<li><strong>ip</strong> (<em>str</em>) – New IP address of the netinterface</li>
+<li><strong>port</strong> (<em>int</em>) – New Port of the netinterface</li>
+<li><strong>com_type</strong> (<em>str</em>) – New communication type of the netinterface</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_create">
+<code class="descname">node_create</code><span class="sig-paren">(</span><em>node_name</em>, <em>node_type</em>, <em>ip</em>, <em>com_type='Plain'</em>, <em>port=None</em>, <em>netif_name='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a node on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Name of the node.</li>
+<li><strong>node_type</strong> (<em>str</em>) – Node type of the new node, one of linstor.consts.VAL_NODE_TYPE*</li>
+<li><strong>ip</strong> (<em>str</em>) – IP address to use for the nodes default netinterface.</li>
+<li><strong>com_type</strong> (<em>str</em>) – Communication type of the node.</li>
+<li><strong>port</strong> (<em>int</em>) – Port number of the node.</li>
+<li><strong>netif_name</strong> (<em>str</em>) – Netinterface name that is created.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_create_swordfish_target">
+<code class="descname">node_create_swordfish_target</code><span class="sig-paren">(</span><em>node_name</em>, <em>storage_service</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_create_swordfish_target" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_delete">
+<code class="descname">node_delete</code><span class="sig-paren">(</span><em>node_name</em>, <em>async_msg=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the given node on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Node name to delete.</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_list">
+<code class="descname">node_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all nodes known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A MsgLstNode proto message containing all information.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[RESTMessageResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_list_raise">
+<code class="descname">node_list_raise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_list_raise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all nodes known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Node list response objects</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">NodeListResponse</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>LinstorError</strong> – if apicallerror or no response received</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_lost">
+<code class="descname">node_lost</code><span class="sig-paren">(</span><em>node_name</em>, <em>async_msg=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_lost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes an unrecoverable node on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Node name to delete.</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_modify">
+<code class="descname">node_modify</code><span class="sig-paren">(</span><em>node_name</em>, <em>node_type=None</em>, <em>property_dict=None</em>, <em>delete_props=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the properties of a given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Name of the node to modify.</li>
+<li><strong>node_type</strong> (<em>int</em>) – Type of the node, any of VAL_NODE_TYPE_*</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_reconnect">
+<code class="descname">node_reconnect</code><span class="sig-paren">(</span><em>node_names</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_reconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces the controller to drop a connection on a satellite and reconnect.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node_names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of nodes to reconnect.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list containing ApiCallResponses from the controller.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[ApiCallResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.node_types">
+<code class="descname">node_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.node_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all allowed node types by the api.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list containing all node type strings.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.Linstor.provider_list">
+<em class="property">classmethod </em><code class="descname">provider_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.provider_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of possible provider names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Set of provider names</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">set[str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_auto_place">
+<code class="descname">resource_auto_place</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>place_count</em>, <em>storage_pool=None</em>, <em>do_not_place_with=None</em>, <em>do_not_place_with_regex=None</em>, <em>replicas_on_same=None</em>, <em>replicas_on_different=None</em>, <em>diskless_on_remaining=False</em>, <em>async_msg=False</em>, <em>layer_list=None</em>, <em>provider_list=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_auto_place" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auto places(deploys) a resource to the amount of place_count.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource definition to deploy</li>
+<li><strong>place_count</strong> (<em>int</em>) – Number of placements, on how many different nodes</li>
+<li><strong>storage_pool</strong> (<em>str</em>) – Storage pool to use</li>
+<li><strong>do_not_place_with</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Do not place with resource names in this list</li>
+<li><strong>do_not_place_with_regex</strong> (<em>str</em>) – A regex string that rules out resources</li>
+<li><strong>replicas_on_same</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of node property names, their values should match</li>
+<li><strong>replicas_on_different</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of node property names, their values should not match</li>
+<li><strong>diskless_on_remaining</strong> (<em>bool</em>) – If True all remaining nodes will add a diskless resource</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites</li>
+<li><strong>layer_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Define layers for the resource</li>
+<li><strong>provider_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Filter provider kinds</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_conn_list">
+<code class="descname">resource_conn_list</code><span class="sig-paren">(</span><em>rsc_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_conn_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all resource connection to the given resource name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsc_name</strong> – Name of the resource to get the connections.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">MsgLstRscConn</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[ProtoMessageResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_conn_modify">
+<code class="descname">resource_conn_modify</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>node_a</em>, <em>node_b</em>, <em>property_dict</em>, <em>delete_props</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_conn_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify properties of a resource connection.
+Identified by the resource name, node1 and node2 arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>node_a</strong> (<em>str</em>) – Name of the first node.</li>
+<li><strong>node_b</strong> (<em>str</em>) – Name of the second node.</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_create">
+<code class="descname">resource_create</code><span class="sig-paren">(</span><em>rscs</em>, <em>async_msg=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates new resources in a resource definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rscs</strong> (<em>list</em><em>[</em><a class="reference internal" href="#linstor.linstorapi.ResourceData" title="linstor.linstorapi.ResourceData"><em>ResourceData</em></a><em>]</em>) – Resources to create</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_create_and_auto_place">
+<code class="descname">resource_create_and_auto_place</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>size</em>, <em>place_count</em>, <em>storage_pool=None</em>, <em>diskless_on_remaining=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_create_and_auto_place" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a convenience method mainly intended for plugins.
+It is quite usual that plugins have a “create” step where they auto-place a resource.
+Later, these plugins have an “open” call where they might create diskless assignments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the new resource definition.</li>
+<li><strong>size</strong> (<em>int</em>) – Size of the volume definition in kibibytes.</li>
+<li><strong>place_count</strong> (<em>int</em>) – Number of placements, on how many different nodes</li>
+<li><strong>storage_pool</strong> (<em>str</em>) – Storage pool to use</li>
+<li><strong>diskless_on_remaining</strong> (<em>bool</em>) – If True all remaining nodes will add a diskless resource</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_delete">
+<code class="descname">resource_delete</code><span class="sig-paren">(</span><em>node_name</em>, <em>rsc_name</em>, <em>async_msg=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a given resource on the given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Name of the node where the resource is deployed.</li>
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_delete_if_diskless">
+<code class="descname">resource_delete_if_diskless</code><span class="sig-paren">(</span><em>node_name</em>, <em>rsc_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_delete_if_diskless" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a given resource if, and only if, diskless on the given node.
+If the resource does not even exit, then the delete is considered successful (NOOP).
+If the resource is not diskless, then the action is considered successful.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Name of the node where the resource is deployed.</li>
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_dfn_create">
+<code class="descname">resource_dfn_create</code><span class="sig-paren">(</span><em>name</em>, <em>port=None</em>, <em>external_name=None</em>, <em>layer_list=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_dfn_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a resource definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – Name of the new resource definition.</li>
+<li><strong>port</strong> (<em>int</em>) – Port the resource definition should use.</li>
+<li><strong>layer_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Set of layer names to use.</li>
+<li><strong>external_name</strong> (<em>str</em>) – Unicode string of the user specified name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_dfn_delete">
+<code class="descname">resource_dfn_delete</code><span class="sig-paren">(</span><em>name</em>, <em>async_msg=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_dfn_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a given resource definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – Resource definition name to delete.</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_dfn_list">
+<code class="descname">resource_dfn_list</code><span class="sig-paren">(</span><em>query_volume_definitions=True</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_dfn_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all resource definitions known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A MsgLstRscDfn proto message containing all information.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[ResourceDefinitionResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_dfn_modify">
+<code class="descname">resource_dfn_modify</code><span class="sig-paren">(</span><em>name</em>, <em>property_dict</em>, <em>delete_props=None</em>, <em>peer_slots=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_dfn_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify properties of the given resource definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – Name of the resource definition to modify.</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+<li><strong>peer_slots</strong> (<em>int</em>) – peer slot count for new resources of this resource dfn</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_dfn_props_list">
+<code class="descname">resource_dfn_props_list</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>filter_by_namespace=''</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_dfn_props_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary containing keys for a resource definition filtered by namespace.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource definition it is linked to.</li>
+<li><strong>filter_by_namespace</strong> (<em>str</em>) – Return only keys starting with the given prefix.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict containing matching keys</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>LinstorError</strong> – if resource can not be found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_list">
+<code class="descname">resource_list</code><span class="sig-paren">(</span><em>filter_by_nodes=None</em>, <em>filter_by_resources=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all resources known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter_by_nodes</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – filter resources by nodes</li>
+<li><strong>filter_by_resources</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – filter resources by resource names</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A MsgLstRsc proto message containing all information.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[RESTMessageResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_modify">
+<code class="descname">resource_modify</code><span class="sig-paren">(</span><em>node_name</em>, <em>rsc_name</em>, <em>property_dict</em>, <em>delete_props=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify properties of a given resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Node name where the resource is deployed.</li>
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.resource_toggle_disk">
+<code class="descname">resource_toggle_disk</code><span class="sig-paren">(</span><em>node_name</em>, <em>rsc_name</em>, <em>storage_pool=None</em>, <em>diskless=False</em>, <em>async_msg=False</em>, <em>migrate_from=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.resource_toggle_disk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggles a resource between diskless and having a disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Node name where the resource is deployed.</li>
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.Linstor.return_if_error">
+<em class="property">classmethod </em><code class="descname">return_if_error</code><span class="sig-paren">(</span><em>replies_</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.return_if_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns None if any of the replies is an error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replies</strong> (<em>list</em><em>[</em><em>ApiCallResponse</em><em>]</em>) – list of api call responses</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None if any is not success, else all given replies</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.Linstor.return_if_failure">
+<em class="property">classmethod </em><code class="descname">return_if_failure</code><span class="sig-paren">(</span><em>replies_</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.return_if_failure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns None if any of the replies is no success.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>replies</strong> (<em>list</em><em>[</em><em>ApiCallResponse</em><em>]</em>) – list of api call responses</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None if any is not success, else all given replies</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.snapshot_create">
+<code class="descname">snapshot_create</code><span class="sig-paren">(</span><em>node_names</em>, <em>rsc_name</em>, <em>snapshot_name</em>, <em>async_msg</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.snapshot_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a snapshot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Names of the nodes.</li>
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>snapshot_name</strong> (<em>str</em>) – Name of the new snapshot.</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.snapshot_delete">
+<code class="descname">snapshot_delete</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>snapshot_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.snapshot_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a snapshot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>snapshot_name</strong> (<em>str</em>) – Name of the snapshot.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.snapshot_dfn_list">
+<code class="descname">snapshot_dfn_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.snapshot_dfn_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all snapshot definitions known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A MsgLstSnapshotDfn proto message containing all information.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[SnapshotsResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.snapshot_resource_restore">
+<code class="descname">snapshot_resource_restore</code><span class="sig-paren">(</span><em>node_names</em>, <em>from_resource</em>, <em>from_snapshot</em>, <em>to_resource</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.snapshot_resource_restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore from a snapshot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Names of the nodes.</li>
+<li><strong>from_resource</strong> (<em>str</em>) – Name of the snapshot resource.</li>
+<li><strong>from_snapshot</strong> (<em>str</em>) – Name of the snapshot.</li>
+<li><strong>to_resource</strong> (<em>str</em>) – Name of the new resource.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.snapshot_rollback">
+<code class="descname">snapshot_rollback</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>snapshot_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.snapshot_rollback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Roll a resource back to a snapshot state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource.</li>
+<li><strong>snapshot_name</strong> (<em>str</em>) – Name of the snapshot.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.snapshot_volume_definition_restore">
+<code class="descname">snapshot_volume_definition_restore</code><span class="sig-paren">(</span><em>from_resource</em>, <em>from_snapshot</em>, <em>to_resource</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.snapshot_volume_definition_restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create volume definitions from a snapshot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>from_resource</strong> (<em>str</em>) – Name of the snapshot resource.</li>
+<li><strong>from_snapshot</strong> (<em>str</em>) – Name of the snapshot.</li>
+<li><strong>to_resource</strong> (<em>str</em>) – Name of the new resource.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.stats">
+<code class="descname">stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a printable string containing network statistics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A string containing network stats.s</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_create">
+<code class="descname">storage_pool_create</code><span class="sig-paren">(</span><em>node_name</em>, <em>storage_pool_name</em>, <em>storage_driver</em>, <em>driver_pool_name</em>, <em>shared_space=None</em>, <em>property_dict=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new storage pool on the given node.
+If there doesn’t yet exist a storage pool definition the controller will implicitly create one.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Node on which to create the storage pool.</li>
+<li><strong>storage_pool_name</strong> (<em>str</em>) – Name of the storage pool.</li>
+<li><strong>storage_driver</strong> (<em>str</em>) – Storage driver to use.</li>
+<li><strong>driver_pool_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Name of the pool the storage driver should use on the node.</li>
+<li><strong>shared_space</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – Name of a shared space, if used.</li>
+<li><strong>property_dict</strong> (<em>Optional</em><em>[</em><em>dict</em><em>]</em>) – Initial properties for the storage pool.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_delete">
+<code class="descname">storage_pool_delete</code><span class="sig-paren">(</span><em>node_name</em>, <em>storage_pool_name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a storage pool on the given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Node on which the storage pool resides.</li>
+<li><strong>storage_pool_name</strong> (<em>str</em>) – Name of the storage pool.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_dfn_create">
+<code class="descname">storage_pool_dfn_create</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_dfn_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new storage pool definition on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Storage pool definition name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list containing ApiCallResponses from the controller.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[ApiCallResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_dfn_delete">
+<code class="descname">storage_pool_dfn_delete</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_dfn_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a given storage pool definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – Storage pool definition name to delete.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list containing ApiCallResponses from the controller.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[ApiCallResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_dfn_list">
+<code class="descname">storage_pool_dfn_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_dfn_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all storage pool definitions known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A MsgLstStorPoolDfn proto message containing all information.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list[StoragePoolDefinitionResponse]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_dfn_max_vlm_sizes">
+<code class="descname">storage_pool_dfn_max_vlm_sizes</code><span class="sig-paren">(</span><em>place_count</em>, <em>storage_pool_name=None</em>, <em>do_not_place_with=None</em>, <em>do_not_place_with_regex=None</em>, <em>replicas_on_same=None</em>, <em>replicas_on_different=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_dfn_max_vlm_sizes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auto places(deploys) a resource to the amount of place_count.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>place_count</strong> (<em>int</em>) – Number of placements, on how many different nodes</li>
+<li><strong>storage_pool_name</strong> (<em>str</em>) – Only check for the given storage pool name</li>
+<li><strong>do_not_place_with</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Do not place with resource names in this list</li>
+<li><strong>do_not_place_with_regex</strong> (<em>str</em>) – A regex string that rules out resources</li>
+<li><strong>replicas_on_same</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of node property names, their values should match</li>
+<li><strong>replicas_on_different</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of node property names, their values should not match</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses or ProtoMessageResponse (with MsgRspMaxVlmSizes)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Union[list[ApiCallResponse], list[RESTMessageResponse]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_dfn_modify">
+<code class="descname">storage_pool_dfn_modify</code><span class="sig-paren">(</span><em>name</em>, <em>property_dict</em>, <em>delete_props=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_dfn_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify properties of a given storage pool definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) – Storage pool definition name to modify</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_list">
+<code class="descname">storage_pool_list</code><span class="sig-paren">(</span><em>filter_by_nodes=None</em>, <em>filter_by_stor_pools=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all storage pool known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter_by_nodes</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Filter storage pools by nodes.</li>
+<li><strong>filter_by_stor_pools</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Filter storage pools by storage pool names.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A MsgLstStorPool proto message containing all information.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[RESTMessageResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_list_raise">
+<code class="descname">storage_pool_list_raise</code><span class="sig-paren">(</span><em>filter_by_nodes=None</em>, <em>filter_by_stor_pools=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_list_raise" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter_by_nodes</strong> – </li>
+<li><strong>filter_by_stor_pools</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">StoragePoolListResponse</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.storage_pool_modify">
+<code class="descname">storage_pool_modify</code><span class="sig-paren">(</span><em>node_name</em>, <em>storage_pool_name</em>, <em>property_dict</em>, <em>delete_props=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.storage_pool_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify properties of a given storage pool on the given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>node_name</strong> (<em>str</em>) – Node on which the storage pool resides.</li>
+<li><strong>storage_pool_name</strong> (<em>str</em>) – Name of the storage pool.</li>
+<li><strong>str</strong><strong>] </strong><strong>property_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_props</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.volume_dfn_create">
+<code class="descname">volume_dfn_create</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>size</em>, <em>volume_nr=None</em>, <em>minor_nr=None</em>, <em>encrypt=False</em>, <em>storage_pool=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.volume_dfn_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new volume definition on the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource definition it is linked to.</li>
+<li><strong>size</strong> (<em>int</em>) – Size of the volume definition in kibibytes.</li>
+<li><strong>volume_nr</strong> (<em>int</em>) – Volume number to use.</li>
+<li><strong>minor_nr</strong> (<em>int</em>) – Minor number to use.</li>
+<li><strong>encrypt</strong> (<em>bool</em>) – Encrypt created volumes from this volume definition.</li>
+<li><strong>storage_pool</strong> – Storage pool this volume definition will use.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.volume_dfn_delete">
+<code class="descname">volume_dfn_delete</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>volume_nr</em>, <em>async_msg=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.volume_dfn_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a given volume definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Resource definition name of the volume definition.</li>
+<li><strong>volume_nr</strong> – Volume number.</li>
+<li><strong>async_msg</strong> (<em>bool</em>) – True to return without waiting for the action to complete on the satellites.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.volume_dfn_modify">
+<code class="descname">volume_dfn_modify</code><span class="sig-paren">(</span><em>rsc_name</em>, <em>volume_nr</em>, <em>set_properties=None</em>, <em>delete_properties=None</em>, <em>size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.volume_dfn_modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify properties of the given volume definition.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rsc_name</strong> (<em>str</em>) – Name of the resource definition.</li>
+<li><strong>volume_nr</strong> (<em>int</em>) – Volume number of the volume definition.</li>
+<li><strong>str</strong><strong>] </strong><strong>set_properties</strong> (<em>dict</em><em>[</em><em>str</em><em>,</em>) – Dict containing key, value pairs for new values.</li>
+<li><strong>delete_properties</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of properties to delete</li>
+<li><strong>size</strong> (<em>int</em>) – New size of the volume definition in kibibytes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list containing ApiCallResponses from the controller.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[ApiCallResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="linstor.linstorapi.Linstor.volume_list">
+<code class="descname">volume_list</code><span class="sig-paren">(</span><em>filter_by_nodes=None</em>, <em>filter_by_stor_pools=None</em>, <em>filter_by_resources=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.Linstor.volume_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request a list of all volumes known to the controller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filter_by_nodes</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – filter resources by nodes</li>
+<li><strong>filter_by_stor_pools</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – filter resources by storage pool names</li>
+<li><strong>filter_by_resources</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – filter resources by resource names</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A MsgLstRsc proto message containing all information.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[RESTMessageResponse]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="linstor.linstorapi.MultiLinstor">
+<em class="property">class </em><code class="descclassname">linstor.linstorapi.</code><code class="descname">MultiLinstor</code><span class="sig-paren">(</span><em>ctrl_host_list</em>, <em>timeout=300</em>, <em>keep_alive=False</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.MultiLinstor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#linstor.linstorapi.Linstor" title="linstor.linstorapi.Linstor"><code class="xref py py-class docutils literal notranslate"><span class="pre">linstor.linstorapi.Linstor</span></code></a></p>
+<dl class="method">
+<dt id="linstor.linstorapi.MultiLinstor.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.MultiLinstor.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects the internal linstor network client.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="linstor.linstorapi.MultiLinstor.controller_uri_list">
+<em class="property">classmethod </em><code class="descname">controller_uri_list</code><span class="sig-paren">(</span><em>controller_list</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.MultiLinstor.controller_uri_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a simple ‘10.0.0.1,10.0.0.2’ ip/host list to [‘linstor://10.0.0.1’, ‘linstor://10.0.0.2’] uris.
+:param str controller_list: list of controller addresses separated by comma
+:return: List of linstor uris
+:rtype: list[str]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="linstor.linstorapi.ResourceData">
+<em class="property">class </em><code class="descclassname">linstor.linstorapi.</code><code class="descname">ResourceData</code><span class="sig-paren">(</span><em>node_name</em>, <em>rsc_name</em>, <em>diskless=False</em>, <em>storage_pool=None</em>, <em>node_id=None</em>, <em>layer_list=None</em><span class="sig-paren">)</span><a class="headerlink" href="#linstor.linstorapi.ResourceData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="linstor.linstorapi.ResourceData.diskless">
+<code class="descname">diskless</code><a class="headerlink" href="#linstor.linstorapi.ResourceData.diskless" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.ResourceData.layer_list">
+<code class="descname">layer_list</code><a class="headerlink" href="#linstor.linstorapi.ResourceData.layer_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.ResourceData.node_id">
+<code class="descname">node_id</code><a class="headerlink" href="#linstor.linstorapi.ResourceData.node_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.ResourceData.node_name">
+<code class="descname">node_name</code><a class="headerlink" href="#linstor.linstorapi.ResourceData.node_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.ResourceData.rsc_name">
+<code class="descname">rsc_name</code><a class="headerlink" href="#linstor.linstorapi.ResourceData.rsc_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="linstor.linstorapi.ResourceData.storage_pool">
+<code class="descname">storage_pool</code><a class="headerlink" href="#linstor.linstorapi.ResourceData.storage_pool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-linstor">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-linstor" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">linstor package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-linstor.resource">linstor.resource module</a></li>
+<li><a class="reference internal" href="#module-linstor.kv">linstor.kv module</a></li>
+<li><a class="reference internal" href="#module-linstor.linstorapi">linstor.linstorapi module</a></li>
+<li><a class="reference internal" href="#module-linstor">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Linstor Python API Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="linstor.protobuf_to_dict.html"
+                        title="next chapter">linstor.protobuf_to_dict package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/linstor.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="linstor.protobuf_to_dict.html" title="linstor.protobuf_to_dict package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Linstor Python API Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">linstor 0.9.3-3aaf4e documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Peinthor Rene.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>
